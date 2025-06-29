@@ -1,0 +1,1200 @@
+{
+  "name": "telegram-ai-bot",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook').item.json.body.message.text }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "74e14772-fc81-456d-acc9-179d2e232fad"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8d07ef59-070c-4e57-ae1c-5e61c140889a",
+                    "leftValue": "={{ $('Webhook').item.json.body.message.voice }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "voice"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fbee3dc-de53-4ee7-b88e-3415d89f8bb1",
+                    "leftValue": "={{ $('Webhook').item.json.body.message.audio }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "78190833-73ff-4c43-af7a-35f9de9c7b5b",
+                    "leftValue": "={{ $('Webhook').item.json.body.message.photo[3] }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "object",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "photo"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -180,
+        -681
+      ],
+      "id": "02fa3dc4-51de-4865-acd2-5e2bcee8cc62",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "telegam",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -840,
+        -660
+      ],
+      "id": "a82c5e4c-fd25-4ce9-b515-d08aa6c51207",
+      "name": "Webhook",
+      "webhookId": "528ba51a-7eb4-4356-bfb6-244aefe46bf0"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "What's in this image? Answer Russian.",
+        "imageUrls": "=https://api.telegram.org/file/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/{{ $json.result.file_path }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        700,
+        -360
+      ],
+      "id": "d0529331-650e-41cd-89cd-c83abf51fc3f",
+      "name": "Analyze image",
+      "credentials": {
+        "openAiApi": {
+          "id": "9VaYPVDDRL8LB49n",
+          "name": "OpenAi n8n api"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/getFile",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file_id",
+              "value": "={{ $('Webhook').item.json.body.message.photo[3].file_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        -360
+      ],
+      "id": "4e44a8f6-f9c2-4c25-ac4c-3af38845f051",
+      "name": "Get File Info Image"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/getFile",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file_id",
+              "value": "={{ $('Webhook').item.json.body.message.voice.file_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        -760
+      ],
+      "id": "776e299a-9220-49b6-bcc3-2c33c0d697ab",
+      "name": "Get File Info Voice"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/file/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/{{ $json.result.file_path }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        -760
+      ],
+      "id": "3e5758f2-995e-476e-9d74-3b6c9570dc7e",
+      "name": "Download Voice File"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/getFile",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file_id",
+              "value": "={{ $('Webhook').item.json.body.message.audio.file_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        -560
+      ],
+      "id": "99e8e922-f7d6-4ff8-acb0-008480d61ec2",
+      "name": "Get File Info Audio"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/file/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/{{ $json.result.file_path }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        -560
+      ],
+      "id": "9a2d9d4c-ce6c-4a29-aec0-57bf9412b938",
+      "name": "Download Audio File"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        700,
+        -760
+      ],
+      "id": "52498ece-e29e-4041-a44c-2ed07954ae27",
+      "name": "Transcribe a recording voice",
+      "credentials": {
+        "openAiApi": {
+          "id": "9VaYPVDDRL8LB49n",
+          "name": "OpenAi n8n api"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        700,
+        -560
+      ],
+      "id": "8c614933-9135-4c0e-bdc5-b6445f415537",
+      "name": "Transcribe a recording audio",
+      "credentials": {
+        "openAiApi": {
+          "id": "9VaYPVDDRL8LB49n",
+          "name": "OpenAi n8n api"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "902016f5-1274-4d55-9b69-4f88b8df381e",
+              "name": "text",
+              "value": "={{ $('Transcribe a recording voice').item.json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "cef2bdbf-3097-46e2-aafc-2ef202f81c26",
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "55817a18-1b48-46d9-ba30-e07e576310ec",
+              "name": "telegram_bot_api_key",
+              "value": "={{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        -760
+      ],
+      "id": "f74ce3dd-f54f-49e1-836b-eb22c51471c1",
+      "name": "text voice"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "902016f5-1274-4d55-9b69-4f88b8df381e",
+              "name": "text",
+              "value": "={{ $('Transcribe a recording audio').item.json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "d474666c-c1d3-44f6-b76e-587bd33556b8",
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "376cec58-690b-4036-887a-d8343c756d6c",
+              "name": "telegram_bot_api_key",
+              "value": "={{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        -560
+      ],
+      "id": "c4b9dac3-2730-49c1-ae65-82f6a4193b5f",
+      "name": "text audio"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "902016f5-1274-4d55-9b69-4f88b8df381e",
+              "name": "text",
+              "value": "={{ $('Analyze image').item.json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "f642f03c-d0c9-42ec-96b2-57bd48f13a5c",
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "8d1aab82-79a7-45bc-8e02-1109326590ae",
+              "name": "telegram_bot_api_key",
+              "value": "={{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        -360
+      ],
+      "id": "e42e9a3b-6f63-4052-9ecb-c4e382c9403e",
+      "name": "text photo"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "902016f5-1274-4d55-9b69-4f88b8df381e",
+              "name": "text",
+              "value": "={{ $('Webhook').item.json.body.message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "c9fda88d-8884-434d-bcf8-97b4b43e01f8",
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "b547f855-056e-4d77-99d7-9f334dd3ff11",
+              "name": "telegram_bot_api_key",
+              "value": "={{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        -960
+      ],
+      "id": "5c2414ac-d7a5-42ef-aa7c-6106afc624fc",
+      "name": "text text"
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1360,
+        -681
+      ],
+      "id": "6df358a3-5eaa-492e-806d-e53ee1370339",
+      "name": "text"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $json.telegram_bot_api_key }}/sendChatAction",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}"
+            },
+            {
+              "name": "action",
+              "value": "typing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -400,
+        -660
+      ],
+      "id": "a6e95b0e-b756-45d3-91da-bbeb91769f50",
+      "name": "Telegram typing"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}"
+            },
+            {
+              "name": "text",
+              "value": "Секунду, прослушаю.."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        40,
+        -760
+      ],
+      "id": "ed7e05fa-183b-41d7-b6ba-d146fc5290b5",
+      "name": "Just a moment voice"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}"
+            },
+            {
+              "name": "text",
+              "value": "Секунду, прослушаю.."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        40,
+        -560
+      ],
+      "id": "205e158d-272c-4a99-bad5-ddd92479ee8a",
+      "name": "Just a moment audio"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}"
+            },
+            {
+              "name": "text",
+              "value": "Секунду, посмотрю.."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        -360
+      ],
+      "id": "4cd9be67-b227-44b1-bfc8-79c0d9c69ee9",
+      "name": "Just a moment photo"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/deleteMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}"
+            },
+            {
+              "name": "message_id",
+              "value": "={{ $('Just a moment voice').item.json.result.message_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        -760
+      ],
+      "id": "dcb8c3f9-629a-4787-b6e7-08928006b39f",
+      "name": "Delete just a moment voice"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/deleteMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}"
+            },
+            {
+              "name": "message_id",
+              "value": "={{ $('Just a moment audio').item.json.result.message_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        -560
+      ],
+      "id": "34436253-945d-4995-be1f-481605f92794",
+      "name": "Delete just a moment audio"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/deleteMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.from.id }}"
+            },
+            {
+              "name": "message_id",
+              "value": "={{ $('Just a moment photo').item.json.result.message_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        -360
+      ],
+      "id": "ad3abdc2-9ae1-46e9-991d-398538e1d3b2",
+      "name": "Delete just a moment photo"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "options": {
+          "systemMessage": "Отвечай, как любящая девушка. С заботой и вниманием."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        -660
+      ],
+      "id": "feb0bd1a-77c9-4e82-8dbf-be569147ae43",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('text').item.json.chat_id }}",
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1728,
+        -440
+      ],
+      "id": "75536cac-d3a9-471c-a658-71debcfa446c",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('text').item.json.telegram_bot_api_key }}/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('text').item.json.chat_id }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.output }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1956,
+        -660
+      ],
+      "id": "274f57a5-b8b1-406e-8536-791ccc418a5b",
+      "name": "Send Message"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2f8cfb58-6572-4380-b4f8-4c5e8ee2c75d",
+              "name": "telegram_bot_api_key",
+              "value": "API KEY ЗАМЕНИТЬ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -620,
+        -660
+      ],
+      "id": "2f47a62c-801e-4c41-b619-e020d4a773b1",
+      "name": "API KEY ЗАМЕНИТЬ"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 200,
+        "width": 200,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -670,
+        -700
+      ],
+      "id": "1da73eed-1415-4f2f-a654-5952d311d016",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# Инструкция по Telegram боту с AI\n\nАвтор: [Nikita Shorin](https://www.youtube.com/@shorin_nikita)\n\n## Описание\nВоркфлоу создает умного Telegram бота, который обрабатывает текст, голос, аудио и изображения с помощью OpenAI.\n\n## Настройка:\n\n1. 🔴 **API ключ Telegram бота**:\n   - Создайте бота в [@BotFather](https://t.me/botfather)\n   - В узле \"API KEY ЗАМЕНИТЬ\" замените на реальный токен \n\n2. 🟢 **OpenAI credentials**:\n   - Создайте API-ключ на [платформе OpenAI](https://platform.openai.com/api-keys)\n   - Настройте учетные данные OpenAI в соответствующих узлах\n\n3. 🟡 **Webhook**:\n   - Внутри ноды укажите path. Например, **telegram**\n   - Скачайте шаблон: [**http handle**](https://github.com/shorin-nikita/PrideAIBot/blob/main/n8n/HTTP%20handle.json) и выполните привязку вебхука\n\n4. 🔵 **AI Agent**:\n   - Измените **System prompt** под ваши задачи\n\n## Функции:\n- ✅ Ответы на текст\n- ✅ Транскрибация голоса/аудио\n- ✅ Анализ изображений\n- ✅ Память контекста\n- ✅ Статус \"печатает...\"\n\nБот работает на русском языке и показывает временные уведомления при обработке файлов.",
+        "height": 800,
+        "width": 880,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        -180
+      ],
+      "id": "11c5b313-7cb3-470e-a698-60d69c8a87d9",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 580,
+        "width": 180,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        660,
+        -780
+      ],
+      "id": "efdf3614-7afb-4b49-8218-702ceb5ab122",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 140,
+        "width": 150,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -460
+      ],
+      "id": "f15fe096-1f91-404c-b419-7340b40651d0",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1580,
+        -440
+      ],
+      "id": "380314fa-4925-431c-9d64-fd828ab6c791",
+      "name": "GPT 4.1 mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "9VaYPVDDRL8LB49n",
+          "name": "OpenAi n8n api"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 200,
+        "width": 180
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        -700
+      ],
+      "id": "14861dea-e334-471a-8299-64d24b91def5",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "width": 320,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -680
+      ],
+      "id": "b1d7d7a7-eb52-4fec-93d6-1c5daa5f3176",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 800,
+        "width": 3040,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -900,
+        -1000
+      ],
+      "id": "3b25640f-d637-4c2a-979a-a474a89361d3",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "text text",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Just a moment voice",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Just a moment audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Just a moment photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "API KEY ЗАМЕНИТЬ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File Info Image": {
+      "main": [
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File Info Voice": {
+      "main": [
+        [
+          {
+            "node": "Download Voice File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Voice File": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File Info Audio": {
+      "main": [
+        [
+          {
+            "node": "Download Audio File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Audio File": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording voice": {
+      "main": [
+        [
+          {
+            "node": "Delete just a moment voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording audio": {
+      "main": [
+        [
+          {
+            "node": "Delete just a moment audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "Delete just a moment photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "text voice": {
+      "main": [
+        [
+          {
+            "node": "text",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "text audio": {
+      "main": [
+        [
+          {
+            "node": "text",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "text photo": {
+      "main": [
+        [
+          {
+            "node": "text",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "text text": {
+      "main": [
+        [
+          {
+            "node": "text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram typing": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Just a moment voice": {
+      "main": [
+        [
+          {
+            "node": "Get File Info Voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Just a moment audio": {
+      "main": [
+        [
+          {
+            "node": "Get File Info Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Just a moment photo": {
+      "main": [
+        [
+          {
+            "node": "Get File Info Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete just a moment voice": {
+      "main": [
+        [
+          {
+            "node": "text voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete just a moment audio": {
+      "main": [
+        [
+          {
+            "node": "text audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete just a moment photo": {
+      "main": [
+        [
+          {
+            "node": "text photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "text": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API KEY ЗАМЕНИТЬ": {
+      "main": [
+        [
+          {
+            "node": "Telegram typing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT 4.1 mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0ee34509-006e-4f32-b7dc-f68aa18d795c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "89117b89e6ee2e2d36a3f934f1a63e32c1c204c62e00bb625da8c39baf77c2c7"
+  },
+  "id": "BdSXYCgDTzkywVZz",
+  "tags": [
+    {
+      "createdAt": "2025-05-05T01:58:24.104Z",
+      "updatedAt": "2025-05-05T01:58:24.104Z",
+      "id": "TQhE2B8hgPAxRAi1",
+      "name": "PrideAIBot"
+    }
+  ]
+}
