@@ -1,5 +1,4 @@
 {
-  "name": "telegram-ai-bot",
   "nodes": [
     {
       "parameters": {
@@ -112,8 +111,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -180,
-        -681
+        196,
+        -721
       ],
       "id": "02fa3dc4-51de-4865-acd2-5e2bcee8cc62",
       "name": "Switch"
@@ -128,7 +127,7 @@
       "typeVersion": 2,
       "position": [
         -840,
-        -660
+        -850
       ],
       "id": "a82c5e4c-fd25-4ce9-b515-d08aa6c51207",
       "name": "Webhook",
@@ -151,8 +150,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        700,
-        -360
+        1076,
+        -400
       ],
       "id": "d0529331-650e-41cd-89cd-c83abf51fc3f",
       "name": "Analyze image",
@@ -180,8 +179,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        480,
-        -360
+        856,
+        -400
       ],
       "id": "4e44a8f6-f9c2-4c25-ac4c-3af38845f051",
       "name": "Get File Info Image"
@@ -203,8 +202,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        260,
-        -760
+        636,
+        -800
       ],
       "id": "776e299a-9220-49b6-bcc3-2c33c0d697ab",
       "name": "Get File Info Voice"
@@ -217,8 +216,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        480,
-        -760
+        856,
+        -800
       ],
       "id": "3e5758f2-995e-476e-9d74-3b6c9570dc7e",
       "name": "Download Voice File"
@@ -240,8 +239,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        260,
-        -560
+        636,
+        -600
       ],
       "id": "99e8e922-f7d6-4ff8-acb0-008480d61ec2",
       "name": "Get File Info Audio"
@@ -254,8 +253,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        480,
-        -560
+        856,
+        -600
       ],
       "id": "9a2d9d4c-ce6c-4a29-aec0-57bf9412b938",
       "name": "Download Audio File"
@@ -269,8 +268,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        700,
-        -760
+        1076,
+        -800
       ],
       "id": "52498ece-e29e-4041-a44c-2ed07954ae27",
       "name": "Transcribe a recording voice",
@@ -290,8 +289,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        700,
-        -560
+        1076,
+        -600
       ],
       "id": "8c614933-9135-4c0e-bdc5-b6445f415537",
       "name": "Transcribe a recording audio",
@@ -331,8 +330,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1140,
-        -760
+        1516,
+        -800
       ],
       "id": "f74ce3dd-f54f-49e1-836b-eb22c51471c1",
       "name": "text voice"
@@ -366,8 +365,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1140,
-        -560
+        1516,
+        -600
       ],
       "id": "c4b9dac3-2730-49c1-ae65-82f6a4193b5f",
       "name": "text audio"
@@ -401,8 +400,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1140,
-        -360
+        1516,
+        -400
       ],
       "id": "e42e9a3b-6f63-4052-9ecb-c4e382c9403e",
       "name": "text photo"
@@ -436,8 +435,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1140,
-        -960
+        1516,
+        -1000
       ],
       "id": "5c2414ac-d7a5-42ef-aa7c-6106afc624fc",
       "name": "text text"
@@ -449,8 +448,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1360,
-        -681
+        1736,
+        -621
       ],
       "id": "6df358a3-5eaa-492e-806d-e53ee1370339",
       "name": "text"
@@ -477,8 +476,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -400,
-        -660
+        -102,
+        -700
       ],
       "id": "a6e95b0e-b756-45d3-91da-bbeb91769f50",
       "name": "Telegram typing"
@@ -505,8 +504,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        40,
-        -760
+        416,
+        -800
       ],
       "id": "ed7e05fa-183b-41d7-b6ba-d146fc5290b5",
       "name": "Just a moment voice"
@@ -533,8 +532,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        40,
-        -560
+        416,
+        -600
       ],
       "id": "205e158d-272c-4a99-bad5-ddd92479ee8a",
       "name": "Just a moment audio"
@@ -561,8 +560,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        260,
-        -360
+        636,
+        -400
       ],
       "id": "4cd9be67-b227-44b1-bfc8-79c0d9c69ee9",
       "name": "Just a moment photo"
@@ -589,8 +588,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        920,
-        -760
+        1296,
+        -800
       ],
       "id": "dcb8c3f9-629a-4787-b6e7-08928006b39f",
       "name": "Delete just a moment voice"
@@ -617,8 +616,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        920,
-        -560
+        1296,
+        -600
       ],
       "id": "34436253-945d-4995-be1f-481605f92794",
       "name": "Delete just a moment audio"
@@ -645,8 +644,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        920,
-        -360
+        1296,
+        -400
       ],
       "id": "ad3abdc2-9ae1-46e9-991d-398538e1d3b2",
       "name": "Delete just a moment photo"
@@ -662,8 +661,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        1580,
-        -660
+        1956,
+        -600
       ],
       "id": "feb0bd1a-77c9-4e82-8dbf-be569147ae43",
       "name": "AI Agent"
@@ -671,14 +670,14 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('text').item.json.chat_id }}",
+        "sessionKey": "={{ $('Webhook').item?.json?.body?.message?.from?.id || $('text').item?.json?.chat_id }}",
         "contextWindowLength": 50
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        1728,
-        -440
+        2080,
+        -380
       ],
       "id": "75536cac-d3a9-471c-a658-71debcfa446c",
       "name": "Simple Memory"
@@ -705,8 +704,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1956,
-        -660
+        2332,
+        -600
       ],
       "id": "274f57a5-b8b1-406e-8536-791ccc418a5b",
       "name": "Send Message"
@@ -729,7 +728,7 @@
       "typeVersion": 3.4,
       "position": [
         -620,
-        -660
+        -850
       ],
       "id": "2f47a62c-801e-4c41-b619-e020d4a773b1",
       "name": "API KEY ЗАМЕНИТЬ"
@@ -745,7 +744,7 @@
       "typeVersion": 1,
       "position": [
         -670,
-        -700
+        -890
       ],
       "id": "1da73eed-1415-4f2f-a654-5952d311d016",
       "name": "Sticky Note3"
@@ -753,15 +752,15 @@
     {
       "parameters": {
         "content": "# Инструкция по Telegram боту с AI\n\nАвтор: [Nikita Shorin](https://www.youtube.com/@shorin_nikita)\n\n## Описание\nВоркфлоу создает умного Telegram бота, который обрабатывает текст, голос, аудио и изображения с помощью OpenAI.\n\n## Настройка:\n\n1. 🔴 **API ключ Telegram бота**:\n   - Создайте бота в [@BotFather](https://t.me/botfather)\n   - В узле \"API KEY ЗАМЕНИТЬ\" замените на реальный токен \n\n2. 🟢 **OpenAI credentials**:\n   - Создайте API-ключ на [платформе OpenAI](https://platform.openai.com/api-keys)\n   - Настройте учетные данные OpenAI в соответствующих узлах\n\n3. 🟡 **Webhook**:\n   - Внутри ноды укажите path. Например, **telegram**\n   - Скачайте шаблон: [**http handle**](https://github.com/shorin-nikita/PrideAIBot/blob/main/n8n/HTTP%20handle.json) и выполните привязку вебхука\n\n4. 🔵 **AI Agent**:\n   - Измените **System prompt** под ваши задачи\n\n## Функции:\n- ✅ Ответы на текст\n- ✅ Транскрибация голоса/аудио\n- ✅ Анализ изображений\n- ✅ Память контекста\n- ✅ Статус \"печатает...\"\n\nБот работает на русском языке и показывает временные уведомления при обработке файлов.",
-        "height": 800,
+        "height": 900,
         "width": 880,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1260,
-        -180
+        -1800,
+        -1120
       ],
       "id": "11c5b313-7cb3-470e-a698-60d69c8a87d9",
       "name": "Sticky Note4"
@@ -776,8 +775,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        660,
-        -780
+        1036,
+        -820
       ],
       "id": "efdf3614-7afb-4b49-8218-702ceb5ab122",
       "name": "Sticky Note5"
@@ -792,8 +791,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1540,
-        -460
+        1880,
+        -400
       ],
       "id": "f15fe096-1f91-404c-b419-7340b40651d0",
       "name": "Sticky Note6"
@@ -810,8 +809,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1580,
-        -440
+        1920,
+        -380
       ],
       "id": "380314fa-4925-431c-9d64-fd828ab6c791",
       "name": "GPT 4.1 mini",
@@ -832,7 +831,7 @@
       "typeVersion": 1,
       "position": [
         -880,
-        -700
+        -890
       ],
       "id": "14861dea-e334-471a-8299-64d24b91def5",
       "name": "Sticky Note"
@@ -846,8 +845,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1540,
-        -680
+        1920,
+        -620
       ],
       "id": "b1d7d7a7-eb52-4fec-93d6-1c5daa5f3176",
       "name": "Sticky Note2"
@@ -855,21 +854,96 @@
     {
       "parameters": {
         "content": "",
-        "height": 800,
-        "width": 3040,
+        "height": 900,
+        "width": 3440,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
         -900,
-        -1000
+        -1120
       ],
       "id": "3b25640f-d637-4c2a-979a-a474a89361d3",
       "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "824ed408-3e32-4af8-90ca-b11b924ad5f6",
+              "leftValue": "={{ $('Webhook').item.json.body.message.text }}",
+              "rightValue": "/start",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -400,
+        -850
+      ],
+      "id": "a9652ced-9aaf-48f3-bd76-6c9d69b40862",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "mode": "delete",
+        "deleteMode": "all"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        -1100
+      ],
+      "id": "fba022d0-61a4-4c82-980b-f6ff17fb0b7e",
+      "name": "Chat Memory Manager"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.message.chat.id }}"
+            },
+            {
+              "name": "text",
+              "value": "НОВЫЙ ЧАТ"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        196,
+        -1000
+      ],
+      "id": "4f18b649-24f4-47e7-8f15-8bf45b37bb9b",
+      "name": "Send Message NEW CHAT"
     }
   ],
-  "pinData": {},
   "connections": {
     "Switch": {
       "main": [
@@ -908,6 +982,17 @@
         [
           {
             "node": "API KEY ЗАМЕНИТЬ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "Delete just a moment photo",
             "type": "main",
             "index": 0
           }
@@ -991,17 +1076,6 @@
         ]
       ]
     },
-    "Analyze image": {
-      "main": [
-        [
-          {
-            "node": "Delete just a moment photo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "text voice": {
       "main": [
         [
@@ -1040,6 +1114,17 @@
         [
           {
             "node": "text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "text": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -1123,17 +1208,6 @@
         ]
       ]
     },
-    "text": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent": {
       "main": [
         [
@@ -1152,6 +1226,11 @@
             "node": "AI Agent",
             "type": "ai_memory",
             "index": 0
+          },
+          {
+            "node": "Chat Memory Manager",
+            "type": "ai_memory",
+            "index": 0
           }
         ]
       ]
@@ -1160,7 +1239,7 @@
       "main": [
         [
           {
-            "node": "Telegram typing",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -1177,24 +1256,92 @@
           }
         ]
       ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram typing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "Send Message NEW CHAT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1"
+  "pinData": {
+    "Webhook": [
+      {
+        "headers": {
+          "host": "api.ai1618.ru",
+          "content-length": "398",
+          "accept-encoding": "gzip, deflate",
+          "content-type": "application/json",
+          "x-forwarded-for": "91.108.5.17",
+          "x-forwarded-host": "api.ai1618.ru",
+          "x-forwarded-port": "443",
+          "x-forwarded-proto": "https",
+          "x-forwarded-server": "a30807168bae",
+          "x-real-ip": "91.108.5.17"
+        },
+        "params": {},
+        "query": {},
+        "body": {
+          "update_id": 183950499,
+          "message": {
+            "message_id": 177,
+            "from": {
+              "id": 760159041,
+              "is_bot": false,
+              "first_name": "Nikita",
+              "last_name": "Shorin",
+              "username": "SHORIN1618",
+              "language_code": "ru",
+              "is_premium": true
+            },
+            "chat": {
+              "id": 760159041,
+              "first_name": "Nikita",
+              "last_name": "Shorin",
+              "username": "SHORIN1618",
+              "type": "private"
+            },
+            "date": 1753284002,
+            "text": "/start",
+            "entities": [
+              {
+                "offset": 0,
+                "length": 6,
+                "type": "bot_command"
+              }
+            ]
+          }
+        },
+        "webhookUrl": "https://api.ai1618.ru/webhook/telegam",
+        "executionMode": "production"
+      }
+    ]
   },
-  "versionId": "0ee34509-006e-4f32-b7dc-f68aa18d795c",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "89117b89e6ee2e2d36a3f934f1a63e32c1c204c62e00bb625da8c39baf77c2c7"
-  },
-  "id": "BdSXYCgDTzkywVZz",
-  "tags": [
-    {
-      "createdAt": "2025-05-05T01:58:24.104Z",
-      "updatedAt": "2025-05-05T01:58:24.104Z",
-      "id": "TQhE2B8hgPAxRAi1",
-      "name": "PrideAIBot"
-    }
-  ]
+  }
 }
