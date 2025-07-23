@@ -81,11 +81,9 @@
 
 ### Make.com
 - [Официальная документация Make.com](https://www.make.com/en/help)
-- [Как импортировать blueprint](https://www.make.com/en/help/scenarios/scenario-blueprints)
 
 ### n8n
 - [Официальная документация n8n](https://docs.n8n.io/)
-- [Как импортировать воркфлоу](https://docs.n8n.io/workflows/import-export/)
 
 ## 👨‍💻 Автор
 
