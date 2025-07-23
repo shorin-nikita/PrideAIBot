@@ -869,40 +869,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "824ed408-3e32-4af8-90ca-b11b924ad5f6",
-              "leftValue": "={{ $('Webhook').item.json.body.message.text }}",
-              "rightValue": "/start",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -400,
-        -850
-      ],
-      "id": "a9652ced-9aaf-48f3-bd76-6c9d69b40862",
-      "name": "If"
-    },
-    {
-      "parameters": {
         "mode": "delete",
         "deleteMode": "all"
       },
@@ -942,6 +908,40 @@
       ],
       "id": "4f18b649-24f4-47e7-8f15-8bf45b37bb9b",
       "name": "Send Message NEW CHAT"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "824ed408-3e32-4af8-90ca-b11b924ad5f6",
+              "leftValue": "={{ $('Webhook').item.json.body.message.text }}",
+              "rightValue": "/start",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -400,
+        -850
+      ],
+      "id": "a9652ced-9aaf-48f3-bd76-6c9d69b40862",
+      "name": "Start command?"
     }
   ],
   "connections": {
@@ -1239,7 +1239,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Start command?",
             "type": "main",
             "index": 0
           }
@@ -1257,7 +1257,18 @@
         ]
       ]
     },
-    "If": {
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "Send Message NEW CHAT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start command?": {
       "main": [
         [
           {
@@ -1269,17 +1280,6 @@
         [
           {
             "node": "Telegram typing",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Chat Memory Manager": {
-      "main": [
-        [
-          {
-            "node": "Send Message NEW CHAT",
             "type": "main",
             "index": 0
           }
