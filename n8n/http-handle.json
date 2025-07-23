@@ -1,20 +1,5 @@
 {
-  "name": "HTTP Ручки",
   "nodes": [
-    {
-      "parameters": {
-        "amount": 1
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        -660,
-        1020
-      ],
-      "id": "e3d85471-f15d-4dd1-82f3-fc8d428e381e",
-      "name": "Wait1",
-      "webhookId": "7017d4bf-eae9-4f50-b123-1d44b9a1f21e"
-    },
     {
       "parameters": {
         "method": "POST",
@@ -24,10 +9,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -660,
-        1350
+        300,
+        600
       ],
-      "id": "9db74730-e780-4fc3-8161-1e28b8ef3edb",
+      "id": "0046b690-97ee-470c-9007-7fa4ff382eaa",
       "name": "Telegram Привязка"
     },
     {
@@ -55,10 +40,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -660,
-        820
+        300,
+        120
       ],
-      "id": "01eb5792-8499-4918-a732-4c127996112e",
+      "id": "e93b20a0-8a7b-4bb8-a9f3-4001f76eab99",
       "name": "Wazzup Привязка"
     },
     {
@@ -70,10 +55,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1500,
-        740
+        -540,
+        40
       ],
-      "id": "fd5113dd-fcf6-4d3c-b000-f04e7bc0c1b3",
+      "id": "7068abfd-418f-48e7-9569-4b649bbd330d",
       "name": "Sticky Note"
     },
     {
@@ -99,10 +84,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -880,
-        780
+        80,
+        80
       ],
-      "id": "7731515b-6bfc-42c7-a67d-c57128850b15",
+      "id": "f4267758-4813-4176-84a4-c67dd403927f",
       "name": "SET Wazzup Личный"
     },
     {
@@ -128,10 +113,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -880,
-        1080
+        80,
+        380
       ],
-      "id": "004927d7-0fd9-4697-bbea-d8e4f357b79d",
+      "id": "4a12ceb7-e7b6-4d7d-a227-4ff31cbfb940",
       "name": "SET Wazzup Клиента"
     },
     {
@@ -155,10 +140,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -440,
-        1020
+        300,
+        320
       ],
-      "id": "c75fb14d-af16-4d38-8103-48feff9f36ea",
+      "id": "d910b2f9-85aa-4473-aaea-6f91e02fb02e",
       "name": "Wazzup Проверка Вебхука"
     },
     {
@@ -170,10 +155,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -440,
-        1550
+        300,
+        740
       ],
-      "id": "de19c0ce-58dd-4545-8e81-0b68eff1a456",
+      "id": "708a5d13-f8db-459b-9779-f2f4053d92cc",
       "name": "Telegram Проверка Вебхука"
     },
     {
@@ -181,10 +166,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1180,
-        1160
+        -220,
+        460
       ],
-      "id": "cce72316-faa6-469b-a3d5-dd323b153313",
+      "id": "5c4f7835-fbff-489f-ab60-ae30dfd7cf4c",
       "name": "СТАРТ"
     },
     {
@@ -197,10 +182,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1020,
-        740
+        -60,
+        40
       ],
-      "id": "daec0dc3-7e10-4b32-a33d-638fbc51d5ce",
+      "id": "a2f90dcf-d164-48d5-a127-4e3c7fad9ab4",
       "name": "Sticky Note1"
     },
     {
@@ -213,10 +198,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1020,
-        1260
+        -60,
+        560
       ],
-      "id": "8a732191-08a7-40d0-8890-eaaa99f7c846",
+      "id": "d15b3378-74e7-4af4-8df2-04f2c3f0ba2b",
       "name": "Sticky Note2"
     },
     {
@@ -242,10 +227,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -880,
-        1300
+        80,
+        660
       ],
-      "id": "7de36ba4-7e18-4904-addb-6f7e1388072a",
+      "id": "7e6628ab-c3e3-4ace-8fd8-b177a7070b95",
       "name": "SET Telegram Bot 1"
     },
     {
@@ -271,50 +256,39 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -880,
-        1600
+        80,
+        860
       ],
-      "id": "fcc4cec6-3c32-443d-b3e7-49531c1ed400",
+      "id": "856c0dde-827b-45c0-881f-6440aa930313",
       "name": "SET Telegram Bot 2"
     },
     {
       "parameters": {
-        "amount": 1
+        "method": "POST",
+        "url": "= https://api.telegram.org/bot{{ $json['api key'] }}/getMe",
+        "options": {}
       },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        -660,
-        1550
+        300,
+        900
       ],
-      "id": "6bd9ecba-4dc8-467f-97a2-96865dd80f41",
-      "name": "Wait2",
-      "webhookId": "30e289c9-515b-4b14-8f5e-1e5d23408a36"
+      "id": "7b5eb6c7-ae4f-4092-9ed9-b3adb2055360",
+      "name": "Telegram Данные Привязки"
     }
   ],
-  "pinData": {},
   "connections": {
-    "Wait1": {
-      "main": [
-        [
-          {
-            "node": "Wazzup Проверка Вебхука",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "SET Wazzup Личный": {
       "main": [
         [
           {
-            "node": "Wait1",
+            "node": "Wazzup Привязка",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Wazzup Привязка",
+            "node": "Wazzup Проверка Вебхука",
             "type": "main",
             "index": 0
           }
@@ -330,7 +304,7 @@
             "index": 0
           },
           {
-            "node": "Wait1",
+            "node": "Wazzup Проверка Вебхука",
             "type": "main",
             "index": 0
           }
@@ -357,7 +331,12 @@
             "index": 0
           },
           {
-            "node": "Wait2",
+            "node": "Telegram Проверка Вебхука",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram Данные Привязки",
             "type": "main",
             "index": 0
           }
@@ -373,41 +352,22 @@
             "index": 0
           },
           {
-            "node": "Wait2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait2": {
-      "main": [
-        [
-          {
             "node": "Telegram Проверка Вебхука",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Telegram Данные Привязки",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
     }
   },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "versionId": "bc7b86fa-010e-4dcf-ae9d-10f2013e4065",
+  "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "89117b89e6ee2e2d36a3f934f1a63e32c1c204c62e00bb625da8c39baf77c2c7"
-  },
-  "id": "Nwj116RLUD3BfWk1",
-  "tags": [
-    {
-      "createdAt": "2025-05-05T01:58:24.104Z",
-      "updatedAt": "2025-05-05T01:58:24.104Z",
-      "id": "TQhE2B8hgPAxRAi1",
-      "name": "PrideAIBot"
-    }
-  ]
+  }
 }
