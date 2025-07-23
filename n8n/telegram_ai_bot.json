@@ -111,10 +111,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        196,
-        -721
+        1180,
+        400
       ],
-      "id": "02fa3dc4-51de-4865-acd2-5e2bcee8cc62",
+      "id": "a648fe13-a121-4912-b977-9b8cb1a52b84",
       "name": "Switch"
     },
     {
@@ -126,10 +126,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -840,
-        -850
+        160,
+        280
       ],
-      "id": "a82c5e4c-fd25-4ce9-b515-d08aa6c51207",
+      "id": "eab96923-b83c-46af-8dcd-df666db5d387",
       "name": "Webhook",
       "webhookId": "528ba51a-7eb4-4356-bfb6-244aefe46bf0"
     },
@@ -150,15 +150,15 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        1076,
-        -400
+        2060,
+        720
       ],
-      "id": "d0529331-650e-41cd-89cd-c83abf51fc3f",
+      "id": "fceb2206-5ba7-4428-a175-fc23a2d13c02",
       "name": "Analyze image",
       "credentials": {
         "openAiApi": {
-          "id": "9VaYPVDDRL8LB49n",
-          "name": "OpenAi n8n api"
+          "id": "TrtfpYNJaLbwIzTC",
+          "name": "OpenAi account VIDEO"
         }
       }
     },
@@ -179,10 +179,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        856,
-        -400
+        1840,
+        720
       ],
-      "id": "4e44a8f6-f9c2-4c25-ac4c-3af38845f051",
+      "id": "b53979eb-8ac5-44ea-82e2-ad8e7f73c669",
       "name": "Get File Info Image"
     },
     {
@@ -202,10 +202,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        636,
-        -800
+        1620,
+        320
       ],
-      "id": "776e299a-9220-49b6-bcc3-2c33c0d697ab",
+      "id": "0af3138f-1597-4dd7-a418-4603db29bf6a",
       "name": "Get File Info Voice"
     },
     {
@@ -216,10 +216,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        856,
-        -800
+        1840,
+        320
       ],
-      "id": "3e5758f2-995e-476e-9d74-3b6c9570dc7e",
+      "id": "c2d0cfb4-32a1-40cf-aef4-8c2a5a696a2d",
       "name": "Download Voice File"
     },
     {
@@ -239,10 +239,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        636,
-        -600
+        1620,
+        520
       ],
-      "id": "99e8e922-f7d6-4ff8-acb0-008480d61ec2",
+      "id": "e1695977-701d-49c1-8a3b-e1c023c560c7",
       "name": "Get File Info Audio"
     },
     {
@@ -253,10 +253,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        856,
-        -600
+        1840,
+        520
       ],
-      "id": "9a2d9d4c-ce6c-4a29-aec0-57bf9412b938",
+      "id": "5499d74f-63d2-4cb5-896e-31bd13d6b69e",
       "name": "Download Audio File"
     },
     {
@@ -268,15 +268,15 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        1076,
-        -800
+        2060,
+        320
       ],
-      "id": "52498ece-e29e-4041-a44c-2ed07954ae27",
+      "id": "34e39969-d828-47e2-afbb-150a6f5beeac",
       "name": "Transcribe a recording voice",
       "credentials": {
         "openAiApi": {
-          "id": "9VaYPVDDRL8LB49n",
-          "name": "OpenAi n8n api"
+          "id": "TrtfpYNJaLbwIzTC",
+          "name": "OpenAi account VIDEO"
         }
       }
     },
@@ -289,15 +289,15 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        1076,
-        -600
+        2060,
+        520
       ],
-      "id": "8c614933-9135-4c0e-bdc5-b6445f415537",
+      "id": "55bb4072-855a-40c1-9721-516d971d1402",
       "name": "Transcribe a recording audio",
       "credentials": {
         "openAiApi": {
-          "id": "9VaYPVDDRL8LB49n",
-          "name": "OpenAi n8n api"
+          "id": "TrtfpYNJaLbwIzTC",
+          "name": "OpenAi account VIDEO"
         }
       }
     },
@@ -314,7 +314,7 @@
             {
               "id": "cef2bdbf-3097-46e2-aafc-2ef202f81c26",
               "name": "chat_id",
-              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "value": "={{ $('Webhook').item.json.body.message.chat.id }}",
               "type": "string"
             },
             {
@@ -330,10 +330,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1516,
-        -800
+        2500,
+        320
       ],
-      "id": "f74ce3dd-f54f-49e1-836b-eb22c51471c1",
+      "id": "91b7e285-5509-4287-9d28-5b23f528974b",
       "name": "text voice"
     },
     {
@@ -349,7 +349,7 @@
             {
               "id": "d474666c-c1d3-44f6-b76e-587bd33556b8",
               "name": "chat_id",
-              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "value": "={{ $('Webhook').item.json.body.message.chat.id }}",
               "type": "string"
             },
             {
@@ -365,10 +365,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1516,
-        -600
+        2500,
+        520
       ],
-      "id": "c4b9dac3-2730-49c1-ae65-82f6a4193b5f",
+      "id": "a9de5c3f-82c9-47cd-bb8f-3ef5437000ad",
       "name": "text audio"
     },
     {
@@ -384,7 +384,7 @@
             {
               "id": "f642f03c-d0c9-42ec-96b2-57bd48f13a5c",
               "name": "chat_id",
-              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "value": "={{ $('Webhook').item.json.body.message.chat.id }}",
               "type": "string"
             },
             {
@@ -400,10 +400,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1516,
-        -400
+        2500,
+        720
       ],
-      "id": "e42e9a3b-6f63-4052-9ecb-c4e382c9403e",
+      "id": "0d94e097-142a-447e-8c48-5369ef959d73",
       "name": "text photo"
     },
     {
@@ -419,7 +419,7 @@
             {
               "id": "c9fda88d-8884-434d-bcf8-97b4b43e01f8",
               "name": "chat_id",
-              "value": "={{ $('Webhook').item.json.body.message.from.id }}",
+              "value": "={{ $('Webhook').item.json.body.message.chat.id }}",
               "type": "string"
             },
             {
@@ -435,10 +435,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1516,
-        -1000
+        2500,
+        120
       ],
-      "id": "5c2414ac-d7a5-42ef-aa7c-6106afc624fc",
+      "id": "8b6c0ec4-67a9-4d21-b0cf-5dda8df4697c",
       "name": "text text"
     },
     {
@@ -448,10 +448,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1736,
-        -621
+        2720,
+        500
       ],
-      "id": "6df358a3-5eaa-492e-806d-e53ee1370339",
+      "id": "d184af4a-5902-472f-80db-e77656fe0d04",
       "name": "text"
     },
     {
@@ -476,10 +476,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -102,
-        -700
+        900,
+        420
       ],
-      "id": "a6e95b0e-b756-45d3-91da-bbeb91769f50",
+      "id": "46ad03bf-ae17-4250-b6a7-348abad02185",
       "name": "Telegram typing"
     },
     {
@@ -504,10 +504,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        416,
-        -800
+        1400,
+        320
       ],
-      "id": "ed7e05fa-183b-41d7-b6ba-d146fc5290b5",
+      "id": "41a03453-f2d5-4bfc-a6f4-94b06b823ea5",
       "name": "Just a moment voice"
     },
     {
@@ -532,10 +532,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        416,
-        -600
+        1400,
+        520
       ],
-      "id": "205e158d-272c-4a99-bad5-ddd92479ee8a",
+      "id": "1c66dca1-1461-4769-9ebc-ebef32d77a7a",
       "name": "Just a moment audio"
     },
     {
@@ -560,10 +560,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        636,
-        -400
+        1620,
+        720
       ],
-      "id": "4cd9be67-b227-44b1-bfc8-79c0d9c69ee9",
+      "id": "14f56dce-72fc-434a-b57b-03a89de56154",
       "name": "Just a moment photo"
     },
     {
@@ -588,10 +588,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1296,
-        -800
+        2280,
+        320
       ],
-      "id": "dcb8c3f9-629a-4787-b6e7-08928006b39f",
+      "id": "1c035b13-11d2-4308-aded-5f10d2f52286",
       "name": "Delete just a moment voice"
     },
     {
@@ -616,10 +616,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1296,
-        -600
+        2280,
+        520
       ],
-      "id": "34436253-945d-4995-be1f-481605f92794",
+      "id": "df56f83c-da21-4f21-b6ce-51b49a99d6fa",
       "name": "Delete just a moment audio"
     },
     {
@@ -644,10 +644,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1296,
-        -400
+        2280,
+        720
       ],
-      "id": "ad3abdc2-9ae1-46e9-991d-398538e1d3b2",
+      "id": "492dccc5-ec93-44a8-aa61-75491fad9e9e",
       "name": "Delete just a moment photo"
     },
     {
@@ -661,10 +661,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        1956,
-        -600
+        2940,
+        520
       ],
-      "id": "feb0bd1a-77c9-4e82-8dbf-be569147ae43",
+      "id": "cdc871ac-c66f-4c1a-b82a-ba1203ff3017",
       "name": "AI Agent"
     },
     {
@@ -676,10 +676,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        2104,
-        -380
+        3100,
+        740
       ],
-      "id": "75536cac-d3a9-471c-a658-71debcfa446c",
+      "id": "13efa7fc-5db8-4043-97fc-05dfbee300ef",
       "name": "Simple Memory"
     },
     {
@@ -704,10 +704,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2332,
-        -600
+        3320,
+        520
       ],
-      "id": "274f57a5-b8b1-406e-8536-791ccc418a5b",
+      "id": "e35f77e7-7ec1-49e9-96a2-b05dea9bf72d",
       "name": "Send Message"
     },
     {
@@ -717,7 +717,7 @@
             {
               "id": "2f8cfb58-6572-4380-b4f8-4c5e8ee2c75d",
               "name": "telegram_bot_api_key",
-              "value": "7021920134:AAEQgVG-ArjS5cc_yFuYEUaFuTMkuyTFBG8",
+              "value": "API KEY ЗАМЕНИТЬ",
               "type": "string"
             }
           ]
@@ -727,10 +727,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -620,
-        -850
+        380,
+        280
       ],
-      "id": "2f47a62c-801e-4c41-b619-e020d4a773b1",
+      "id": "c2ac60db-5997-43b0-9ea6-e4f7c7d88a65",
       "name": "API KEY ЗАМЕНИТЬ"
     },
     {
@@ -743,10 +743,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -670,
-        -890
+        320,
+        240
       ],
-      "id": "1da73eed-1415-4f2f-a654-5952d311d016",
+      "id": "ba6fff59-c010-4cd9-a0fa-2b49dfc8d405",
       "name": "Sticky Note3"
     },
     {
@@ -759,10 +759,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1800,
-        -1120
+        -840,
+        -20
       ],
-      "id": "11c5b313-7cb3-470e-a698-60d69c8a87d9",
+      "id": "51ae5e30-a669-4347-b85b-043339f4c9db",
       "name": "Sticky Note4"
     },
     {
@@ -775,10 +775,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1036,
-        -820
+        2020,
+        300
       ],
-      "id": "efdf3614-7afb-4b49-8218-702ceb5ab122",
+      "id": "c46b57d3-2cda-44df-9867-57d0a8b9c6c5",
       "name": "Sticky Note5"
     },
     {
@@ -791,10 +791,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1920,
-        -400
+        2920,
+        720
       ],
-      "id": "f15fe096-1f91-404c-b419-7340b40651d0",
+      "id": "6916b8ad-b6bb-4881-9350-0df3065e62cd",
       "name": "Sticky Note6"
     },
     {
@@ -809,15 +809,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1960,
-        -380
+        2960,
+        740
       ],
-      "id": "380314fa-4925-431c-9d64-fd828ab6c791",
+      "id": "861c209b-b61a-44c5-938e-d4b6c9140633",
       "name": "GPT 4.1 mini",
       "credentials": {
         "openAiApi": {
-          "id": "9VaYPVDDRL8LB49n",
-          "name": "OpenAi n8n api"
+          "id": "TrtfpYNJaLbwIzTC",
+          "name": "OpenAi account VIDEO"
         }
       }
     },
@@ -830,10 +830,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -880,
-        -890
+        120,
+        240
       ],
-      "id": "14861dea-e334-471a-8299-64d24b91def5",
+      "id": "ccae8947-5813-4c71-834d-5f9fec562a75",
       "name": "Sticky Note"
     },
     {
@@ -845,10 +845,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1920,
-        -620
+        2920,
+        500
       ],
-      "id": "b1d7d7a7-eb52-4fec-93d6-1c5daa5f3176",
+      "id": "0af76598-2a2a-4134-87d6-79473bf99793",
       "name": "Sticky Note2"
     },
     {
@@ -861,10 +861,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -924,
-        -1140
+        60,
+        -20
       ],
-      "id": "3b25640f-d637-4c2a-979a-a474a89361d3",
+      "id": "75dfba53-60bc-4b76-9463-ef4354d9b0a3",
       "name": "Sticky Note1"
     },
     {
@@ -875,10 +875,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryManager",
       "typeVersion": 1.1,
       "position": [
-        -180,
-        -1100
+        820,
+        20
       ],
-      "id": "fba022d0-61a4-4c82-980b-f6ff17fb0b7e",
+      "id": "80702b1d-f188-4b7b-8a0d-c8f6611735ab",
       "name": "Chat Memory Manager"
     },
     {
@@ -903,10 +903,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        196,
-        -1000
+        1180,
+        120
       ],
-      "id": "4f18b649-24f4-47e7-8f15-8bf45b37bb9b",
+      "id": "9a3182b0-c54b-4b78-88b2-d803da0823e0",
       "name": "Send Message NEW CHAT"
     },
     {
@@ -937,10 +937,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -400,
-        -850
+        600,
+        280
       ],
-      "id": "a9652ced-9aaf-48f3-bd76-6c9d69b40862",
+      "id": "23b4fcee-0923-457d-b3c9-c343dd4787a5",
       "name": "Start command?"
     },
     {
@@ -952,10 +952,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        -92,
-        -880
+        900,
+        240
       ],
-      "id": "6d332873-324a-4c7b-989f-b79c48fda8db",
+      "id": "4c3c6cf7-0d0a-466a-b153-220a22b00d04",
       "name": "Simple Memory1"
     }
   ],
@@ -1313,22 +1313,22 @@
       {
         "headers": {
           "host": "api.ai1618.ru",
-          "content-length": "334",
+          "content-length": "504",
           "accept-encoding": "gzip, deflate",
           "content-type": "application/json",
-          "x-forwarded-for": "91.108.5.17",
+          "x-forwarded-for": "91.108.5.33",
           "x-forwarded-host": "api.ai1618.ru",
           "x-forwarded-port": "443",
           "x-forwarded-proto": "https",
           "x-forwarded-server": "a30807168bae",
-          "x-real-ip": "91.108.5.17"
+          "x-real-ip": "91.108.5.33"
         },
         "params": {},
         "query": {},
         "body": {
-          "update_id": 183950507,
+          "update_id": 248102418,
           "message": {
-            "message_id": 194,
+            "message_id": 13,
             "from": {
               "id": 6025341317,
               "is_bot": false,
@@ -1337,17 +1337,23 @@
               "language_code": "ru"
             },
             "chat": {
-              "id": 6025341317,
-              "first_name": "THE N",
-              "username": "THE1N618",
-              "type": "private"
+              "id": -4684392983,
+              "title": "VIDEO group",
+              "type": "group",
+              "all_members_are_administrators": true,
+              "accepted_gift_types": {
+                "unlimited_gifts": false,
+                "limited_gifts": false,
+                "unique_gifts": false,
+                "premium_subscription": false
+              }
             },
-            "date": 1753286344,
-            "text": "/start",
+            "date": 1753290247,
+            "text": "/bot привет",
             "entities": [
               {
                 "offset": 0,
-                "length": 6,
+                "length": 4,
                 "type": "bot_command"
               }
             ]
@@ -1359,7 +1365,6 @@
     ]
   },
   "meta": {
-    "templateCredsSetupCompleted": true,
     "instanceId": "89117b89e6ee2e2d36a3f934f1a63e32c1c204c62e00bb625da8c39baf77c2c7"
   }
 }
