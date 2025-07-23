@@ -656,7 +656,7 @@
         "promptType": "define",
         "text": "={{ $json.text }}",
         "options": {
-          "systemMessage": "Отвечай, как любящая девушка. С заботой и вниманием."
+          "systemMessage": "Отвечай, как милая девушка. С заботой и вниманием."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
