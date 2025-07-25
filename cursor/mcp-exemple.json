@@ -1,0 +1,43 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "API KEY ЗАМЕНИТЬ"
+      ]
+    },
+    "firecrawl-mcp": {
+          "command": "npx",
+          "args": ["-y", "firecrawl-mcp"],
+          "env": {
+            "FIRECRAWL_API_KEY": "API KEY ЗАМЕНИТЬ"
+          }
+        },
+        "perplexity-mcp": {
+          "env": {
+            "PERPLEXITY_API_KEY": "API KEY ЗАМЕНИТЬ",
+            "PERPLEXITY_MODEL": "sonar"
+          },
+          "command": "uvx",
+          "args": [
+            "perplexity-mcp"
+          ]
+        },
+        "n8n": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "URL ЗАМЕНИТЬ",
+        "--header",
+        "Authorization: Bearer API KEY ЗАМЕНИТЬ"
+      ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  }
+}
