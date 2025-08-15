@@ -1,5 +1,4 @@
 {
-  "name": "ПАРСЕР",
   "nodes": [
     {
       "parameters": {
@@ -11,39 +10,11 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1838,
-        -172
+        672,
+        64
       ],
-      "id": "52f22231-dafc-4b7e-9ed7-3c0a25246771",
+      "id": "6f5e9fb2-183b-44c5-bfa1-94e9d59d8a0a",
       "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.firecrawl.dev/v1/scrape",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $json.api_key_firecrawl }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"url\": \"{{ $json.url_site }}\",\n  \"formats\": [\n    \"json\",\n    \"screenshot\"\n  ],\n  \"onlyMainContent\": true,\n  \"waitFor\": 3000,\n  \"timeout\": 60000,\n  \"maxAge\": 3600000,\n  \"removeBase64Images\": true,\n  \"blockAds\": true,\n  \"proxy\": \"auto\",\n  \"storeInCache\": true,\n  \"jsonOptions\": {\n    \"prompt\": \"Сделай краткое резюме статьи для бизнес-профессионалов.\"\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -1296,
-        -64
-      ],
-      "id": "0b973991-7410-4411-af7f-00503b072f8d",
-      "name": "Скриншот статьи",
-      "continueOnFail": true
     },
     {
       "parameters": {
@@ -60,10 +31,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -984,
-        -64
+        1520,
+        160
       ],
-      "id": "0f9e77cb-5787-4899-904d-d01f3da9cef5",
+      "id": "36a60702-05c9-4e4a-97ae-326c61ed3614",
       "name": "Получить скриншот",
       "continueOnFail": true
     },
@@ -76,45 +47,11 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.1,
       "position": [
-        -672,
-        84
+        1824,
+        320
       ],
-      "id": "a4eb51e9-95de-4748-b851-7b1cb90cf83f",
+      "id": "a9655098-64ee-4e43-a5ba-3522b10429ed",
       "name": "Объединение данных"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.firecrawl.dev/v1/scrape",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $json.api_key_firecrawl }}"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"url\": \"{{ $json.url_site }}\",\n  \"formats\": [\"markdown\"]\n}",
-        "options": {
-          "timeout": 30000
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -1296,
-        232
-      ],
-      "id": "5d5364aa-7af7-4b07-bd36-9869ca520bce",
-      "name": "Парсер статей",
-      "continueOnFail": true
     },
     {
       "parameters": {
@@ -126,10 +63,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1567,
-        44
+        944,
+        272
       ],
-      "id": "a58c8247-de8e-4fa5-b3f9-db6416fda124",
+      "id": "59794b3c-b1a0-4dac-8874-d9766b5594b0",
       "name": "Sticky Note4"
     },
     {
@@ -155,10 +92,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1520,
-        84
+        976,
+        320
       ],
-      "id": "eac7e8fc-2b95-4898-a461-8100fb59a1ea",
+      "id": "8ba77111-5982-4417-8141-956818923a77",
       "name": "API КЛЮЧИ"
     },
     {
@@ -168,10 +105,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1744,
-        84
+        752,
+        320
       ],
-      "id": "361dd319-d40f-48b7-b16c-4552d9261943",
+      "id": "505eb3bb-5185-45bf-9d9b-07939fba332e",
       "name": "When chat message received",
       "webhookId": "259fcad7-e055-4c33-ad74-cd225e7e37a2"
     },
@@ -179,7 +116,6 @@
       "parameters": {
         "promptType": "define",
         "text": "={{ $json.data.markdown }}",
-        "hasOutputParser": true,
         "messages": {
           "messageValues": [
             {
@@ -192,10 +128,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        -1072,
-        232
+        1424,
+        464
       ],
-      "id": "e287e056-b2c1-425a-a268-f21fbef61010",
+      "id": "e4289628-06e5-429d-9574-d9329ae300a5",
       "name": "Создать пост"
     },
     {
@@ -211,10 +147,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -976,
-        456
+        1520,
+        688
       ],
-      "id": "3b6bcc40-770a-4897-a391-85f71977b1bc",
+      "id": "3c91d88d-8c9d-4a68-8d12-4e48c6ed5cc4",
       "name": "ИИ модель",
       "credentials": {
         "openAiApi": {
@@ -232,10 +168,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1024,
-        416
+        1472,
+        640
       ],
-      "id": "829de4ef-43f0-48ff-8ec3-f251e32403fb",
+      "id": "ba6da68d-f05d-4bcf-8f97-df296d3050b9",
       "name": "Sticky Note5"
     },
     {
@@ -268,10 +204,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -448,
-        84
+        2048,
+        320
       ],
-      "id": "9df167e6-ef94-4f7f-8870-b982cb4c06b5",
+      "id": "b05315d4-066c-4e37-87a1-92bbe04e9937",
       "name": "Send Message"
     },
     {
@@ -284,10 +220,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -517,
-        68
+        1984,
+        304
       ],
-      "id": "5e79013f-6312-4576-8dda-7e41db4fc5f2",
+      "id": "d8421048-9f3e-401e-8a90-18fbd8f045ab",
       "name": "Sticky Note6"
     },
     {
@@ -300,26 +236,76 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2928,
-        -384
+        -432,
+        -160
       ],
-      "id": "91718222-811a-46d2-8fbb-581869993a9f",
+      "id": "16067301-43f4-4188-a2ee-27288228e8dd",
       "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.firecrawl.dev/v1/scrape",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.api_key_firecrawl }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"{{ $json.url_site }}\",\n  \"formats\": [\n    \"json\",\n    \"screenshot\"\n  ],\n  \"onlyMainContent\": true,\n  \"waitFor\": 3000,\n  \"timeout\": 60000,\n  \"maxAge\": 3600000,\n  \"removeBase64Images\": true,\n  \"blockAds\": true,\n  \"proxy\": \"auto\",\n  \"storeInCache\": true,\n  \"jsonOptions\": {\n    \"prompt\": \"Сделай краткое резюме статьи для бизнес-профессионалов.\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        160
+      ],
+      "id": "924b6190-2db1-4094-91dc-66562b065c82",
+      "name": "Скриншот страницы",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.firecrawl.dev/v1/scrape",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.api_key_firecrawl }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"{{ $json.url_site }}\",\n  \"formats\": [\"markdown\"]\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        464
+      ],
+      "id": "8272abf9-ac89-444a-ae90-27785f35e328",
+      "name": "Парсер веб страницы",
+      "continueOnFail": true
     }
   ],
-  "pinData": {},
   "connections": {
-    "Скриншот статьи": {
-      "main": [
-        [
-          {
-            "node": "Получить скриншот",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Получить скриншот": {
       "main": [
         [
@@ -342,27 +328,16 @@
         ]
       ]
     },
-    "Парсер статей": {
-      "main": [
-        [
-          {
-            "node": "Создать пост",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "API КЛЮЧИ": {
       "main": [
         [
           {
-            "node": "Парсер статей",
+            "node": "Парсер веб страницы",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Скриншот статьи",
+            "node": "Скриншот страницы",
             "type": "main",
             "index": 0
           }
@@ -401,24 +376,32 @@
           }
         ]
       ]
+    },
+    "Скриншот страницы": {
+      "main": [
+        [
+          {
+            "node": "Получить скриншот",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Парсер веб страницы": {
+      "main": [
+        [
+          {
+            "node": "Создать пост",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "versionId": "1d89a864-9366-4923-a1ab-d5c106e289e7",
+  "pinData": {},
   "meta": {
-    "templateCredsSetupCompleted": true,
     "instanceId": "89117b89e6ee2e2d36a3f934f1a63e32c1c204c62e00bb625da8c39baf77c2c7"
-  },
-  "id": "qPvFocp4SYxKqCUT",
-  "tags": [
-    {
-      "createdAt": "2025-05-05T01:58:24.104Z",
-      "updatedAt": "2025-05-05T01:58:24.104Z",
-      "id": "TQhE2B8hgPAxRAi1",
-      "name": "PrideAIBot"
-    }
-  ]
+  }
 }
