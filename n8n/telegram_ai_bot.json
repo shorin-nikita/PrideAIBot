@@ -597,7 +597,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/deleteMessage",
+        "url": "=https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/deleteMessage",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -625,7 +625,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/deleteMessage",
+        "url": "=https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/deleteMessage",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -884,7 +884,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "= https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/sendMessage",
+        "url": "=https://api.telegram.org/bot{{ $('API KEY ЗАМЕНИТЬ').item.json.telegram_bot_api_key }}/sendMessage",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
